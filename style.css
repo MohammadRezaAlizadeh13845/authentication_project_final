@@ -1,0 +1,405 @@
+@font-face {
+  font-family: "Iransans";
+  src: url(../authentication-project/fonts/iran-sans/IRANSans-Edit.ttf)
+    format("truetype");
+}
+* {
+  box-sizing: border-box;
+}
+:root {
+  --signup-blue: #2b59ff;
+  --signup-cyan: #2b8eff;
+  --red: rgb(255, 13, 13);
+  --green: rgb(0, 175, 20);
+}
+html[lang="fa"] {
+  font-family: "Iransans";
+  flex-direction: rtl;
+  text-align: center;
+}
+body {
+  background: #f6f5f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  /* margin: -20px 0 50px; */
+}
+
+h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  margin: 20px 0 30px;
+}
+
+a {
+  color: #333;
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid var(--signup-blue);
+  background-color: var(--signup-blue);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  transition: transform 80ms ease-in;
+  margin-top: 5px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+form {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: right;
+}
+
+.form--group {
+  width: 100%;
+}
+
+.form-group__empty {
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  color: var(--red);
+}
+
+label {
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+input,
+select {
+  font-size: 0.8rem;
+  background-color: inherit !important;
+  margin: 5px !important;
+  border: none !important;
+  border-bottom: 3px solid #eee !important;
+  padding: 12px 15px !important;
+  border-radius: 00 5px 5px !important;
+  outline: none !important;
+  transition: border-bottom-color 0.1s ease-in !important;
+}
+select {
+  color: #a1a1a1;
+}
+input:focus,
+select:focus {
+  border-bottom: 3px solid var(--signup-blue) !important;
+  border-radius: 20px !important;
+}
+input.error,
+select.error {
+  border-bottom: 3px solid var(--red) !important;
+  border-radius: 20px !important;
+}
+.sign-up-container input:valid,
+.sign-up-container select:valid {
+  border-bottom: 3px solid var(--green) !important;
+  border-radius: 20px !important;
+}
+
+input:invalid:not(:focus):not(:placeholder-shown) {
+  border-bottom: 3px solid var(--red) !important;
+  border-radius: 20px !important;
+}
+.form--group:has(:invalid:not(:focus):not(:placeholder-shown))
+  .form-group__error {
+  opacity: 1;
+}
+
+input::placeholder {
+  color: #a1a1a1;
+}
+.container {
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 650px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+
+.sign-up-container {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: visible;
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.form-group {
+  width: 100%;
+}
+
+select {
+  background-color: inherit;
+  box-shadow: none;
+  outline: none;
+}
+
+input,
+select,
+p,
+#myDatePicker {
+  direction: rtl !important;
+}
+
+input,
+select,
+#myDatePicker {
+  text-align: right !important;
+  width: 100% !important;
+}
+
+/* #myDatePicker {
+  z-index: 9999;
+  position: relative;
+  --datepicker-width: 50px;
+} */
+
+#myDatePicker::part(calendar) {
+  transform: scale(0.2);
+  transform-origin: top left;
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: var(--signup-cyan);
+  background: -webkit-linear-gradient(
+    to right,
+    var(--signup-blue),
+    var(--signup-cyan)
+  );
+  background: linear-gradient(to right, var(--signup-blue), var(--signup-cyan));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .form-container {
+    width: 100%;
+    height: 50%;
+    top: 0;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .sign-in-container {
+    transform: translateY(0%);
+    order: 1;
+    z-index: 2;
+  }
+
+  .container.right-panel-active .sign-in-container {
+    transform: translateY(200%);
+  }
+
+  .sign-up-container {
+    margin-top: -20px;
+    transform: translateY(-100%);
+    opacity: 0;
+    order: 2;
+    z-index: 1;
+    max-height: 50%;
+    overflow-y: scroll;
+  }
+
+  .container.right-panel-active .sign-up-container {
+    transform: translateY(100%);
+    opacity: 101;
+    animation: show 0.6s;
+  }
+
+  .overlay-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    top: 50%;
+    transform: translateY(0%);
+  }
+
+  .container.right-panel-active .overlay-container {
+    transform: translateY(-100%);
+    z-index: 101;
+  }
+
+  .overlay {
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 200%;
+    transform: translateY(0);
+    left: 0;
+  }
+
+  .container.right-panel-active .overlay {
+    transform: translateY(0%);
+  }
+
+  .overlay-panel {
+    width: 100%;
+    height: 10%;
+    top: 0;
+  }
+
+  .overlay-left {
+    transform: translateY(-600%);
+  }
+
+  .container.right-panel-active .overlay-left {
+    transform: translateY(450%);
+  }
+
+  .overlay-right {
+    top: 50%;
+    transform: translateY(0);
+  }
+
+  .container.right-panel-active .overlay-right {
+    transform: translateY(750%);
+  }
+}
